@@ -484,6 +484,26 @@ function toggleAudio() {
   if (audio.paused) { audio.play(); } else { audio.pause(); }
 }
 
+// Intenta reproducir automáticamente al cargar la página.
+// Si el navegador bloquea el autoplay con sonido (lo más común en móvil),
+// la canción arranca en cuanto la persona toca/hace clic en cualquier
+// parte de la pantalla por primera vez.
+function intentarAutoplay() {
+  var intento = audio.play();
+  if (intento && typeof intento.catch === "function") {
+    intento.catch(function () {
+      function activarConPrimerToque() {
+        audio.play();
+        document.removeEventListener("click", activarConPrimerToque);
+        document.removeEventListener("touchstart", activarConPrimerToque);
+      }
+      document.addEventListener("click", activarConPrimerToque, { once: true });
+      document.addEventListener("touchstart", activarConPrimerToque, { once: true });
+    });
+  }
+}
+intentarAutoplay();
+
 function sendRSVP() {
   var name  = document.getElementById("rsvpName").value.trim();
   var count = document.getElementById("rsvpCount").value;
