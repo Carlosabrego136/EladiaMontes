@@ -43,39 +43,21 @@ body {
   border:1px solid rgba(180,150,90,.10);
 }
 
-/* ── DOVE CORNERS ── */
-/* Cada paloma se dibuja siempre con las alas hacia arriba y la cabeza
-   apuntando hacia la derecha. Para que "miren" hacia el centro de la
-   tarjeta solo usamos espejo horizontal (scaleX) y una leve rotación,
-   nunca scaleY ni scale(-1,-1), así jamás quedan boca abajo. */
-.dc {
-  position:absolute; z-index:3; pointer-events:none;
-  width:62px; height:44px;
-}
-/* TL – mira hacia la derecha (al centro) */
-.dc-tl { top:18px; left:18px; transform:rotate(8deg); }
-/* TR – espejo horizontal: mira hacia la izquierda (al centro) */
-.dc-tr { top:18px; right:18px; transform:scaleX(-1) rotate(8deg); }
-/* BL – misma orientación que TL, sin volteo vertical */
-.dc-bl { bottom:18px; left:18px; transform:rotate(-8deg); }
-/* BR – espejo horizontal de BL */
-.dc-br { bottom:18px; right:18px; transform:scaleX(-1) rotate(-8deg); }
-
 /* Audio */
 .audio-bar {
-  background:rgba(248,244,234,.95);
-  border-bottom:1px solid rgba(180,150,90,.18);
-  padding:10px 28px;
-  display:flex; align-items:center; justify-content:flex-end; gap:14px;
+  text-align:center;
+  padding:12px 0 4px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
   position:relative; z-index:2;
 }
-.audio-note { font-size:15px; color:#a09060; line-height:1; flex-shrink:0; }
+.audio-note { font-size:13px; color:#a09060; line-height:1; flex-shrink:0; }
 .btn-play {
-  width:36px; height:36px; min-width:36px; flex-shrink:0; border-radius:50%;
-  border:1.5px solid rgba(180,150,90,.45);
-  background:rgba(255,255,255,.85);
+  width:40px; height:40px; min-width:40px; flex-shrink:0; border-radius:50%;
+  border:1.5px solid rgba(180,150,90,.55);
+  background:rgba(255,255,255,.92);
   cursor:pointer; display:flex; align-items:center; justify-content:center;
-  font-size:14px; line-height:1; padding:0; color:#7a6040; transition:background .2s;
+  font-size:15px; line-height:1; padding:0; color:#7a6040; transition:background .2s;
+  box-shadow:0 2px 8px rgba(0,0,0,.10);
 }
 .btn-play:hover { background:rgba(220,195,130,.3); }
 
@@ -184,8 +166,8 @@ body {
 
 /* Footer */
 .footer { text-align:center; padding:16px 40px 24px; border-top:1px solid rgba(180,150,80,.18); position:relative; z-index:2; }
-.footer-doves-row { display:flex; align-items:center; justify-content:center; gap:0; margin-bottom:12px; }
-.fdove { width:68px; height:54px; opacity:.78; flex-shrink:0; }
+.footer-doves-row { display:flex; align-items:flex-end; justify-content:center; gap:0; margin-bottom:14px; }
+.fdove { width:100px; height:90px; flex-shrink:0; }
 .fdove-r { transform:scaleX(-1); }
 .footer-wings-center { flex:1; display:flex; justify-content:center; align-items:center; }
 .footer-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:13px; color:#7a6a45; letter-spacing:1.5px; }
@@ -200,77 +182,8 @@ body {
   <circle cx="100" cy="58" r="17" fill="#b0943a"/>
 </svg>
 
-<!-- DOVE TL: alas arriba, cabeza a la derecha, mirando al centro -->
-<svg class="dc dc-tl" viewBox="0 0 100 70" fill="none">
-  <ellipse cx="46" cy="40" rx="16" ry="9" fill="#c9a860" opacity="0.85"/>
-  <circle cx="68" cy="32" r="7.5" fill="#c9a860" opacity="0.85"/>
-  <path d="M74 30 L82 32 L74 34 Z" fill="#c9a860" opacity="0.85"/>
-  <circle cx="70" cy="30" r="1.3" fill="#5a3a10" opacity="0.9"/>
-  <path d="M50 34 C 40 14, 18 4, 2 10 C 18 8, 36 18, 48 32 Z" fill="#d4b870" opacity="0.7"/>
-  <path d="M48 36 C 36 18, 14 10, 0 16 C 16 14, 34 24, 46 36 Z" fill="#c9a860" opacity="0.55"/>
-  <path d="M40 44 C 28 46, 12 54, 4 64 C 14 56, 28 50, 42 48 Z" fill="#c9a860" opacity="0.6"/>
-  <path d="M30 42 C 20 48, 10 58, 6 68 C 14 60, 24 52, 34 46 Z" fill="#d4b870" opacity="0.45"/>
-  <path d="M82 32 C 88 28, 94 28, 96 24" stroke="#6a8830" stroke-width="1.6" fill="none" opacity="0.75"/>
-  <ellipse cx="89" cy="27" rx="3.2" ry="2" fill="#6a8830" opacity="0.65" transform="rotate(-25 89 27)"/>
-  <ellipse cx="94" cy="24" rx="2.8" ry="1.8" fill="#7a9840" opacity="0.6" transform="rotate(-10 94 24)"/>
-</svg>
-
-<!-- DOVE TR: espejo horizontal de TL, sigue mirando al centro, alas arriba -->
-<svg class="dc dc-tr" viewBox="0 0 100 70" fill="none">
-  <ellipse cx="46" cy="40" rx="16" ry="9" fill="#c9a860" opacity="0.85"/>
-  <circle cx="68" cy="32" r="7.5" fill="#c9a860" opacity="0.85"/>
-  <path d="M74 30 L82 32 L74 34 Z" fill="#c9a860" opacity="0.85"/>
-  <circle cx="70" cy="30" r="1.3" fill="#5a3a10" opacity="0.9"/>
-  <path d="M50 34 C 40 14, 18 4, 2 10 C 18 8, 36 18, 48 32 Z" fill="#d4b870" opacity="0.7"/>
-  <path d="M48 36 C 36 18, 14 10, 0 16 C 16 14, 34 24, 46 36 Z" fill="#c9a860" opacity="0.55"/>
-  <path d="M40 44 C 28 46, 12 54, 4 64 C 14 56, 28 50, 42 48 Z" fill="#c9a860" opacity="0.6"/>
-  <path d="M30 42 C 20 48, 10 58, 6 68 C 14 60, 24 52, 34 46 Z" fill="#d4b870" opacity="0.45"/>
-  <path d="M82 32 C 88 28, 94 28, 96 24" stroke="#6a8830" stroke-width="1.6" fill="none" opacity="0.75"/>
-  <ellipse cx="89" cy="27" rx="3.2" ry="2" fill="#6a8830" opacity="0.65" transform="rotate(-25 89 27)"/>
-  <ellipse cx="94" cy="24" rx="2.8" ry="1.8" fill="#7a9840" opacity="0.6" transform="rotate(-10 94 24)"/>
-</svg>
-
-<!-- DOVE BL: misma orientación natural, alas arriba, sin scaleY -->
-<svg class="dc dc-bl" viewBox="0 0 100 70" fill="none">
-  <ellipse cx="46" cy="40" rx="16" ry="9" fill="#c9a860" opacity="0.85"/>
-  <circle cx="68" cy="32" r="7.5" fill="#c9a860" opacity="0.85"/>
-  <path d="M74 30 L82 32 L74 34 Z" fill="#c9a860" opacity="0.85"/>
-  <circle cx="70" cy="30" r="1.3" fill="#5a3a10" opacity="0.9"/>
-  <path d="M50 34 C 40 14, 18 4, 2 10 C 18 8, 36 18, 48 32 Z" fill="#d4b870" opacity="0.7"/>
-  <path d="M48 36 C 36 18, 14 10, 0 16 C 16 14, 34 24, 46 36 Z" fill="#c9a860" opacity="0.55"/>
-  <path d="M40 44 C 28 46, 12 54, 4 64 C 14 56, 28 50, 42 48 Z" fill="#c9a860" opacity="0.6"/>
-  <path d="M30 42 C 20 48, 10 58, 6 68 C 14 60, 24 52, 34 46 Z" fill="#d4b870" opacity="0.45"/>
-  <path d="M82 32 C 88 28, 94 28, 96 24" stroke="#6a8830" stroke-width="1.6" fill="none" opacity="0.75"/>
-  <ellipse cx="89" cy="27" rx="3.2" ry="2" fill="#6a8830" opacity="0.65" transform="rotate(-25 89 27)"/>
-  <ellipse cx="94" cy="24" rx="2.8" ry="1.8" fill="#7a9840" opacity="0.6" transform="rotate(-10 94 24)"/>
-</svg>
-
-<!-- DOVE BR: espejo horizontal de BL, alas siempre arriba -->
-<svg class="dc dc-br" viewBox="0 0 100 70" fill="none">
-  <ellipse cx="46" cy="40" rx="16" ry="9" fill="#c9a860" opacity="0.85"/>
-  <circle cx="68" cy="32" r="7.5" fill="#c9a860" opacity="0.85"/>
-  <path d="M74 30 L82 32 L74 34 Z" fill="#c9a860" opacity="0.85"/>
-  <circle cx="70" cy="30" r="1.3" fill="#5a3a10" opacity="0.9"/>
-  <path d="M50 34 C 40 14, 18 4, 2 10 C 18 8, 36 18, 48 32 Z" fill="#d4b870" opacity="0.7"/>
-  <path d="M48 36 C 36 18, 14 10, 0 16 C 16 14, 34 24, 46 36 Z" fill="#c9a860" opacity="0.55"/>
-  <path d="M40 44 C 28 46, 12 54, 4 64 C 14 56, 28 50, 42 48 Z" fill="#c9a860" opacity="0.6"/>
-  <path d="M30 42 C 20 48, 10 58, 6 68 C 14 60, 24 52, 34 46 Z" fill="#d4b870" opacity="0.45"/>
-  <path d="M82 32 C 88 28, 94 28, 96 24" stroke="#6a8830" stroke-width="1.6" fill="none" opacity="0.75"/>
-  <ellipse cx="89" cy="27" rx="3.2" ry="2" fill="#6a8830" opacity="0.65" transform="rotate(-25 89 27)"/>
-  <ellipse cx="94" cy="24" rx="2.8" ry="1.8" fill="#7a9840" opacity="0.6" transform="rotate(-10 94 24)"/>
-</svg>
-
 <div class="inner-frame"></div>
 <div class="gold-border-top"></div>
-
-<!-- Audio -->
-<div class="audio-bar">
-  <span class="audio-note">♫</span>
-  <button class="btn-play" id="playBtn" onclick="toggleAudio()">⏸</button>
-  <audio id="bgAudio" loop autoplay>
-    <source src="assets/cancion.mp3" type="audio/mpeg">
-  </audio>
-</div>
 
 <!-- Header -->
 <div class="header fade-up">
@@ -304,6 +217,16 @@ body {
     <path d="M80 7 C62 18 30 25 6 12 C20 17 42 10 60 4 C68 1 75 -2 80 -4 C85 -2 92 1 100 4 C118 10 140 17 154 12 C130 25 98 18 80 7Z" fill="#c9a860" opacity="0.36"/>
   </svg>
 </div>
+
+<!-- Audio -->
+<div class="audio-bar">
+  <span class="audio-note">♫</span>
+  <button class="btn-play" id="playBtn" onclick="toggleAudio()">⏸</button>
+  <audio id="bgAudio" loop autoplay>
+    <source src="assets/cancion.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
 
 <!-- Name -->
 <div class="name-section fade-up">
@@ -410,51 +333,95 @@ body {
 <!-- Footer -->
 <div class="footer fade-up">
   <div class="footer-doves-row">
-    <!-- left dove, faces right -->
-    <svg class="fdove" viewBox="0 0 120 80" fill="none">
-      <ellipse cx="58" cy="46" rx="26" ry="13" fill="#c9a860" opacity="0.82"/>
-  <path d="M82 38 C90 34 100 36 104 40 C100 38 90 40 82 42 Z" fill="#c9a860" opacity="0.78"/>
-  <circle cx="90" cy="36" r="11" fill="#c9a860" opacity="0.82"/>
-  <path d="M100 33 L114 36 L100 39 Z" fill="#c9b060" opacity="0.7"/>
-  <circle cx="95" cy="33" r="2.2" fill="#5a3a10" opacity="0.9"/>
-  <path d="M60 42 C50 28 30 12 8 16 C20 14 40 24 54 38 Z" fill="#c9a860" opacity="0.72"/>
-  <path d="M60 42 C52 24 34 8 12 10 C24 10 44 22 56 38 Z" fill="#d4b870" opacity="0.55"/>
-  <path d="M60 42 C46 20 28 6 6 8 C18 8 40 20 56 38 Z" fill="#c9a860" opacity="0.38"/>
-  <path d="M58 50 C44 50 22 56 10 66 C22 58 42 54 56 52 Z" fill="#c9a860" opacity="0.6"/>
-  <path d="M36 52 C28 58 18 66 14 76 C20 68 28 62 36 56 Z" fill="#c9a860" opacity="0.55"/>
-  <path d="M42 52 C34 60 26 70 22 78 C28 70 36 62 42 56 Z" fill="#d4b870" opacity="0.42"/>
-  <path d="M84 50 C80 60 72 68 64 74" stroke="#6a8830" stroke-width="1.8" fill="none" opacity="0.75"/>
-  <ellipse cx="70" cy="62" rx="5" ry="3" fill="#6a8830" opacity="0.65" transform="rotate(-35 70 62)"/>
-  <ellipse cx="65" cy="70" rx="4.5" ry="2.8" fill="#6a8830" opacity="0.6" transform="rotate(-15 65 70)"/>
-  <ellipse cx="75" cy="66" rx="4" ry="2.5" fill="#7a9840" opacity="0.55" transform="rotate(-50 75 66)"/>
-    </svg>
+    <!-- left dove, faces right, wings up, upright -->
+    <svg class="fdove" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body - white dove facing right -->
+  <ellipse cx="68" cy="68" rx="28" ry="14" fill="#f0ece4" stroke="#ddd8cc" stroke-width="0.5"/>
+  <!-- Head -->
+  <circle cx="96" cy="56" r="13" fill="#f4f0e8" stroke="#ddd8cc" stroke-width="0.5"/>
+  <!-- Breast/neck connection -->
+  <ellipse cx="84" cy="62" rx="14" ry="10" fill="#f2ece0"/>
+  <!-- Beak -->
+  <path d="M108 54 L120 56 L108 59 Z" fill="#d4a855"/>
+  <!-- Eye -->
+  <circle cx="103" cy="53" r="3" fill="#2a1a08"/>
+  <circle cx="104" cy="52.2" r="1" fill="white"/>
+  <!-- Upper wing spread upward-left (main large wing) -->
+  <path d="M72 62 C62 44 44 24 18 18 C28 16 50 28 66 46 Z" fill="#f8f4ee" stroke="#e0d8cc" stroke-width="0.4"/>
+  <path d="M70 60 C58 40 38 20 12 14 C22 14 46 26 64 48 Z" fill="#ede8dc" stroke="#d8d0c4" stroke-width="0.3"/>
+  <path d="M68 58 C54 36 32 16 6 10 C18 10 42 24 62 46 Z" fill="#f0ece2" stroke="#d4ccc0" stroke-width="0.3" opacity="0.7"/>
+  <!-- Wing feather details (upper) -->
+  <path d="M48 34 C44 30 38 26 30 24" stroke="#d0c8bc" stroke-width="0.7" fill="none" opacity="0.6"/>
+  <path d="M56 28 C50 22 42 18 32 16" stroke="#d0c8bc" stroke-width="0.7" fill="none" opacity="0.6"/>
+  <path d="M40 40 C36 36 30 32 22 30" stroke="#d0c8bc" stroke-width="0.7" fill="none" opacity="0.5"/>
+  <!-- Tail feathers -->
+  <path d="M42 72 C32 76 20 80 8 84 C18 78 32 72 44 70 Z" fill="#f0ece2" stroke="#ddd8cc" stroke-width="0.4"/>
+  <path d="M44 74 C34 80 22 86 10 92 C20 84 34 76 46 72 Z" fill="#ede8dc" stroke="#d8d0c4" stroke-width="0.4"/>
+  <path d="M46 76 C38 84 28 92 16 98 C26 90 38 80 48 74 Z" fill="#ece6da" opacity="0.8"/>
+  <!-- Lower wing/body fold -->
+  <path d="M60 72 C52 72 42 74 36 78" stroke="#d4ccc0" stroke-width="0.8" fill="none"/>
+  <!-- Feet / perch suggestion -->
+  <path d="M72 80 L68 90 M68 90 L62 94 M68 90 L74 94 M68 90 L66 96" stroke="#c4a870" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M82 80 L80 88 M80 88 L74 92 M80 88 L86 92 M80 88 L78 95" stroke="#c4a870" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Olive branch from beak -->
+  <path d="M110 58 C114 62 118 68 122 74 C118 70 114 66 110 64" stroke="#5a8830" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <!-- Olive leaves -->
+  <ellipse cx="117" cy="66" rx="5.5" ry="2.8" fill="#6a9838" opacity="0.85" transform="rotate(30 117 66)"/>
+  <ellipse cx="113" cy="71" rx="5" ry="2.5" fill="#7aaa40" opacity="0.8" transform="rotate(10 113 71)"/>
+  <ellipse cx="120" cy="72" rx="4.5" ry="2.3" fill="#6a9838" opacity="0.75" transform="rotate(50 120 72)"/>
+  <ellipse cx="115" cy="62" rx="4" ry="2" fill="#7aaa40" opacity="0.75" transform="rotate(-15 115 62)"/>
+  <!-- Wing highlight -->
+  <path d="M68 38 C60 30 48 22 34 18" stroke="white" stroke-width="1.2" fill="none" opacity="0.5"/>
+</svg>
     <!-- center ornament -->
     <div class="footer-wings-center">
-      <svg width="90" height="22" viewBox="0 0 90 22">
+      <svg width="80" height="20" viewBox="0 0 90 22">
         <path d="M45 11 C34 5 16 2 4 8 C11 6 24 10 33 13 C38 15 42 17 45 18 C48 17 52 15 57 13 C66 10 79 6 86 8 C74 2 56 5 45 11Z" fill="#c9a860" opacity="0.4"/>
         <ellipse cx="45" cy="6" rx="14" ry="4" stroke="#c9a860" stroke-width="1" fill="none" opacity="0.28"/>
       </svg>
     </div>
-    <!-- right dove, faces left (mirrored) -->
-    <svg class="fdove fdove-r" viewBox="0 0 120 80" fill="none">
-      <ellipse cx="58" cy="46" rx="26" ry="13" fill="#c9a860" opacity="0.82"/>
-  <path d="M82 38 C90 34 100 36 104 40 C100 38 90 40 82 42 Z" fill="#c9a860" opacity="0.78"/>
-  <circle cx="90" cy="36" r="11" fill="#c9a860" opacity="0.82"/>
-  <path d="M100 33 L114 36 L100 39 Z" fill="#c9b060" opacity="0.7"/>
-  <circle cx="95" cy="33" r="2.2" fill="#5a3a10" opacity="0.9"/>
-  <path d="M60 42 C50 28 30 12 8 16 C20 14 40 24 54 38 Z" fill="#c9a860" opacity="0.72"/>
-  <path d="M60 42 C52 24 34 8 12 10 C24 10 44 22 56 38 Z" fill="#d4b870" opacity="0.55"/>
-  <path d="M60 42 C46 20 28 6 6 8 C18 8 40 20 56 38 Z" fill="#c9a860" opacity="0.38"/>
-  <path d="M58 50 C44 50 22 56 10 66 C22 58 42 54 56 52 Z" fill="#c9a860" opacity="0.6"/>
-  <path d="M36 52 C28 58 18 66 14 76 C20 68 28 62 36 56 Z" fill="#c9a860" opacity="0.55"/>
-  <path d="M42 52 C34 60 26 70 22 78 C28 70 36 62 42 56 Z" fill="#d4b870" opacity="0.42"/>
-  <path d="M84 50 C80 60 72 68 64 74" stroke="#6a8830" stroke-width="1.8" fill="none" opacity="0.75"/>
-  <ellipse cx="70" cy="62" rx="5" ry="3" fill="#6a8830" opacity="0.65" transform="rotate(-35 70 62)"/>
-  <ellipse cx="65" cy="70" rx="4.5" ry="2.8" fill="#6a8830" opacity="0.6" transform="rotate(-15 65 70)"/>
-  <ellipse cx="75" cy="66" rx="4" ry="2.5" fill="#7a9840" opacity="0.55" transform="rotate(-50 75 66)"/>
-    </svg>
+    <!-- right dove, mirror of left, faces left -->
+    <svg class="fdove fdove-r" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body - white dove facing right -->
+  <ellipse cx="68" cy="68" rx="28" ry="14" fill="#f0ece4" stroke="#ddd8cc" stroke-width="0.5"/>
+  <!-- Head -->
+  <circle cx="96" cy="56" r="13" fill="#f4f0e8" stroke="#ddd8cc" stroke-width="0.5"/>
+  <!-- Breast/neck connection -->
+  <ellipse cx="84" cy="62" rx="14" ry="10" fill="#f2ece0"/>
+  <!-- Beak -->
+  <path d="M108 54 L120 56 L108 59 Z" fill="#d4a855"/>
+  <!-- Eye -->
+  <circle cx="103" cy="53" r="3" fill="#2a1a08"/>
+  <circle cx="104" cy="52.2" r="1" fill="white"/>
+  <!-- Upper wing spread upward-left (main large wing) -->
+  <path d="M72 62 C62 44 44 24 18 18 C28 16 50 28 66 46 Z" fill="#f8f4ee" stroke="#e0d8cc" stroke-width="0.4"/>
+  <path d="M70 60 C58 40 38 20 12 14 C22 14 46 26 64 48 Z" fill="#ede8dc" stroke="#d8d0c4" stroke-width="0.3"/>
+  <path d="M68 58 C54 36 32 16 6 10 C18 10 42 24 62 46 Z" fill="#f0ece2" stroke="#d4ccc0" stroke-width="0.3" opacity="0.7"/>
+  <!-- Wing feather details (upper) -->
+  <path d="M48 34 C44 30 38 26 30 24" stroke="#d0c8bc" stroke-width="0.7" fill="none" opacity="0.6"/>
+  <path d="M56 28 C50 22 42 18 32 16" stroke="#d0c8bc" stroke-width="0.7" fill="none" opacity="0.6"/>
+  <path d="M40 40 C36 36 30 32 22 30" stroke="#d0c8bc" stroke-width="0.7" fill="none" opacity="0.5"/>
+  <!-- Tail feathers -->
+  <path d="M42 72 C32 76 20 80 8 84 C18 78 32 72 44 70 Z" fill="#f0ece2" stroke="#ddd8cc" stroke-width="0.4"/>
+  <path d="M44 74 C34 80 22 86 10 92 C20 84 34 76 46 72 Z" fill="#ede8dc" stroke="#d8d0c4" stroke-width="0.4"/>
+  <path d="M46 76 C38 84 28 92 16 98 C26 90 38 80 48 74 Z" fill="#ece6da" opacity="0.8"/>
+  <!-- Lower wing/body fold -->
+  <path d="M60 72 C52 72 42 74 36 78" stroke="#d4ccc0" stroke-width="0.8" fill="none"/>
+  <!-- Feet / perch suggestion -->
+  <path d="M72 80 L68 90 M68 90 L62 94 M68 90 L74 94 M68 90 L66 96" stroke="#c4a870" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M82 80 L80 88 M80 88 L74 92 M80 88 L86 92 M80 88 L78 95" stroke="#c4a870" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Olive branch from beak -->
+  <path d="M110 58 C114 62 118 68 122 74 C118 70 114 66 110 64" stroke="#5a8830" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <!-- Olive leaves -->
+  <ellipse cx="117" cy="66" rx="5.5" ry="2.8" fill="#6a9838" opacity="0.85" transform="rotate(30 117 66)"/>
+  <ellipse cx="113" cy="71" rx="5" ry="2.5" fill="#7aaa40" opacity="0.8" transform="rotate(10 113 71)"/>
+  <ellipse cx="120" cy="72" rx="4.5" ry="2.3" fill="#6a9838" opacity="0.75" transform="rotate(50 120 72)"/>
+  <ellipse cx="115" cy="62" rx="4" ry="2" fill="#7aaa40" opacity="0.75" transform="rotate(-15 115 62)"/>
+  <!-- Wing highlight -->
+  <path d="M68 38 C60 30 48 22 34 18" stroke="white" stroke-width="1.2" fill="none" opacity="0.5"/>
+</svg>
   </div>
-  <p class="footer-text">Que en paz descanse &nbsp;✝&nbsp; R.I.P.</p>
+  <p class="footer-text">Que en paz descanse &nbsp;<span style="color:#c9a860;">✝</span>&nbsp; R.I.P.</p>
 </div>
 
 <div class="gold-border-bottom"></div>
