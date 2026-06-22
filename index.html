@@ -268,7 +268,7 @@ body {
     <div class="event-info">
       <p class="event-time">9:00 am</p>
       <p class="event-title">Santo Rosario</p>
-      <p class="event-place">Poverello of Assisi<br>13367 Borden Ave, Sylmar, CA 91342</p>
+      <p class="event-place"><a href="https://maps.apple/p/RQEWufHQsTLRqK" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:#c9a860;text-underline-offset:3px;">Poverello of Assisi<br>13367 Borden Ave, Sylmar, CA 91342</a></p>
     </div>
   </div>
 
@@ -279,7 +279,7 @@ body {
     <div class="event-info">
       <p class="event-time">11:00 am</p>
       <p class="event-title">Santa Misa</p>
-      <p class="event-place">Poverello of Assisi<br>13367 Borden Ave, Sylmar, CA 91342</p>
+      <p class="event-place"><a href="https://maps.apple/p/RQEWufHQsTLRqK" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:#c9a860;text-underline-offset:3px;">Poverello of Assisi<br>13367 Borden Ave, Sylmar, CA 91342</a></p>
     </div>
   </div>
 
@@ -292,7 +292,7 @@ body {
     <div class="event-info">
       <p class="event-time">12:00 pm</p>
       <p class="event-title">Procesión y Sepulcro</p>
-      <p class="event-place">San Fernando Mission Cemetery<br>11160 Stranwood Ave, Mission Hills, CA 91345</p>
+      <p class="event-place"><a href="https://maps.apple/p/FX2Y.L7QxA2fN6" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:#c9a860;text-underline-offset:3px;">San Fernando Mission Cemetery<br>11160 Stranwood Ave, Mission Hills, CA 91345</a></p>
     </div>
   </div>
 
@@ -301,7 +301,7 @@ body {
   <div class="event-solo fade-up">
     <span class="event-time">2:30 pm</span>
     <p class="event-title">Celebración de Vida</p>
-    <p class="event-place">Residencia de la Familia Robles<br>13690 De Garmo, Sylmar, CA 91342</p>
+    <p class="event-place"><a href="https://maps.apple/p/jiFTbA8Ix_jK..z" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:#c9a860;text-underline-offset:3px;">Residencia de la Familia Robles<br>13690 De Garmo, Sylmar, CA 91342</a></p>
   </div>
 </div>
 
@@ -432,13 +432,40 @@ function sendRSVP() {
   var count = document.getElementById("rsvpCount").value;
   var evt   = document.getElementById("rsvpEvent").value;
   if (!name || !count || !evt) { alert("Por favor complete todos los campos."); return; }
+
+  var to   = "Mrs.at26@gmail.com";
   var sub  = encodeURIComponent("Confirmación de Asistencia - Eladia Montes");
   var body = encodeURIComponent(
     "Confirmación de asistencia al servicio fúnebre de Eladia Montes:\n\n" +
     "Nombre: " + name + "\nPersonas: " + count + "\nEventos: " + evt +
     "\n\nEnviado desde la invitación digital."
   );
-  window.location.href = "mailto:Mrs.at26@gmail.com?subject=" + sub + "&body=" + body;
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/i.test(ua);
+  var isAndroid = /Android/i.test(ua);
+  var mailto = "mailto:" + to + "?subject=" + sub + "&body=" + body;
+  var gmailWeb = "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=" + to + "&su=" + sub + "&body=" + body;
+
+  if (isAndroid) {
+    // Abre la app de Gmail en Android mediante intent, con respaldo a Gmail web
+    var intent = "intent://compose?to=" + to + "&subject=" + sub + "&body=" + body +
+      "#Intent;scheme=mailto;package=com.google.android.gm;S.browser_fallback_url=" +
+      encodeURIComponent(gmailWeb) + ";end";
+    window.location.href = intent;
+  } else if (isIOS) {
+    // Intenta abrir la app de Gmail en iPhone, con respaldo a la app de correo
+    var gmailApp = "googlegmail://co?to=" + to + "&subject=" + sub + "&body=" + body;
+    var opened = Date.now();
+    window.location.href = gmailApp;
+    setTimeout(function() {
+      if (Date.now() - opened < 1500) { window.location.href = mailto; }
+    }, 800);
+  } else {
+    // Escritorio: abre Gmail web en una pestaña nueva
+    window.open(gmailWeb, "_blank");
+  }
+
   document.getElementById("rsvpForm").style.display = "none";
   document.getElementById("rsvpSuccess").style.display = "block";
 }
