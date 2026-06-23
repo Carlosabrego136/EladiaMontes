@@ -162,6 +162,17 @@ body {
   color:#1e1a0e; cursor:pointer; transition:opacity .2s;
 }
 .rsvp-btn:hover { opacity:.85; }
+.rsvp-field textarea {
+  width:100%; padding:11px 13px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(180,150,80,.32);
+  font-family:"Cormorant Garamond",serif; font-size:17px; color:#1e1a0e;
+  line-height:1.6; outline:none; resize:vertical; -webkit-appearance:none; appearance:none;
+}
+.condolencia-intro {
+  font-family:"Cormorant Garamond",serif; font-style:italic;
+  font-size:17px; color:#473d22; line-height:1.7; margin-bottom:16px;
+}
 .rsvp-success { display:none; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:18px; color:#473d22; padding:8px 0 2px; line-height:1.65; }
 
 /* Footer */
@@ -316,7 +327,8 @@ body {
       <div class="carousel-slide"><img src="assets/carrusel2.jpg" alt="Recuerdo de Eladia Montes 2"></div>
       <div class="carousel-slide"><img src="assets/carrusel3.jpg" alt="Recuerdo de Eladia Montes 3"></div>
       <div class="carousel-slide"><img src="assets/carrusel4.jpg" alt="Recuerdo de Eladia Montes 4"></div>
-      <div class="carousel-slide"><img src="assets/carrusel5.jpg" alt="Recuerdo de Eladia Montes 5"></div>
+          <div class="carousel-slide"><img src="assets/carrusel5.jpg" alt="Recuerdo de Eladia Montes 5"></div>
+          <div class="carousel-slide"><img src="assets/carrusel6.jpg" alt="Recuerdo de Eladia Montes 6"></div>
     </div>
   </div>
   <div class="carousel-dots" id="carouselDots"></div>
@@ -358,6 +370,29 @@ body {
   <div class="rsvp-success" id="rsvpSuccess">
     🕊 Gracias por confirmar su asistencia.<br>
     La familia Robles los espera con el corazón abierto.
+  </div>
+</div>
+
+<div class="gold-divider fade-up"><div class="gold-diamond"></div></div>
+
+<!-- Condolencias -->
+<div class="rsvp-section condolencia-section fade-up">
+  <p class="rsvp-title">En su memoria</p>
+  <p class="condolencia-intro">🕊️ Si desea compartir unas palabras de apoyo o un recuerdo en memoria de Eladia, puede dejar su mensaje aquí.</p>
+  <div id="condolenciaForm">
+    <div class="rsvp-field">
+      <label>Su nombre</label>
+      <input type="text" id="condName" placeholder="Su nombre"/>
+    </div>
+    <div class="rsvp-field">
+      <label>Mensaje o recuerdo</label>
+      <textarea id="condMsg" rows="4" placeholder="Escriba sus palabras en memoria de Eladia..."></textarea>
+    </div>
+    <button class="rsvp-btn" onclick="sendCondolencia()">Dejar Condolencia</button>
+  </div>
+  <div class="rsvp-success" id="condSuccess">
+    🕊 Gracias por sus palabras.<br>
+    La familia Robles atesora su mensaje con el corazón.
   </div>
 </div>
 
@@ -468,6 +503,45 @@ function sendRSVP() {
 
   document.getElementById("rsvpForm").style.display = "none";
   document.getElementById("rsvpSuccess").style.display = "block";
+}
+
+function sendCondolencia() {
+  var name = document.getElementById("condName").value.trim();
+  var msg  = document.getElementById("condMsg").value.trim();
+  if (!name || !msg) { alert("Por favor escriba su nombre y mensaje."); return; }
+
+  var to   = "Mrs.at26@gmail.com";
+  var sub  = encodeURIComponent("Condolencia - Eladia Montes");
+  var body = encodeURIComponent(
+    "Mensaje de condolencia en memoria de Eladia Montes:\n\n" +
+    "De: " + name + "\n\nMensaje:\n" + msg +
+    "\n\nEnviado desde la invitación digital."
+  );
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/i.test(ua);
+  var isAndroid = /Android/i.test(ua);
+  var mailto = "mailto:" + to + "?subject=" + sub + "&body=" + body;
+  var gmailWeb = "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=" + to + "&su=" + sub + "&body=" + body;
+
+  if (isAndroid) {
+    var intent = "intent://compose?to=" + to + "&subject=" + sub + "&body=" + body +
+      "#Intent;scheme=mailto;package=com.google.android.gm;S.browser_fallback_url=" +
+      encodeURIComponent(gmailWeb) + ";end";
+    window.location.href = intent;
+  } else if (isIOS) {
+    var gmailApp = "googlegmail://co?to=" + to + "&subject=" + sub + "&body=" + body;
+    var opened = Date.now();
+    window.location.href = gmailApp;
+    setTimeout(function() {
+      if (Date.now() - opened < 1500) { window.location.href = mailto; }
+    }, 800);
+  } else {
+    window.open(gmailWeb, "_blank");
+  }
+
+  document.getElementById("condolenciaForm").style.display = "none";
+  document.getElementById("condSuccess").style.display = "block";
 }
 
 // Carrusel automático
