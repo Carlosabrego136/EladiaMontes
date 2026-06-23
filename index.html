@@ -50,7 +50,7 @@ body {
   background:rgba(248,244,238,.80);
   border-bottom:1px solid rgba(180,150,90,.12);
 }
-.audio-note { font-size:11px; color:#a09060; line-height:1; }
+.audio-note { font-size:14px; color:#7a6a45; line-height:1; }
 .btn-play {
   width:32px; height:32px; border-radius:50%;
   border:1.5px solid rgba(180,150,90,.50);
@@ -68,7 +68,7 @@ body {
 .header-cross { font-size:16px; color:#b8a070; }
 .header-sub {
   font-family:"Cormorant Garamond",serif; font-style:italic;
-  font-size:11px; letter-spacing:4px; color:#7a6a45; text-transform:uppercase;
+  font-size:15px; letter-spacing:4px; color:#5f5230; text-transform:uppercase;
 }
 
 .wings-row { text-align:center; position:relative; z-index:2; }
@@ -94,10 +94,10 @@ body {
 .name-section { text-align:center; padding:16px 40px 8px; position:relative; z-index:2; }
 .in-memory {
   font-family:"Cormorant Garamond",serif; font-style:italic;
-  font-size:12px; letter-spacing:3.5px; color:#7a6a45; text-transform:uppercase; margin-bottom:7px;
+  font-size:16px; letter-spacing:3.5px; color:#5f5230; text-transform:uppercase; margin-bottom:9px;
 }
-.name-main { font-family:"Great Vibes",cursive; font-size:46px; color:#1e1a0e; line-height:1.15; margin-bottom:8px; }
-.dates { font-family:"Cormorant Garamond",serif; font-size:14px; color:#6a5c3a; letter-spacing:1.5px; }
+.name-main { font-family:"Great Vibes",cursive; font-size:52px; color:#1e1a0e; line-height:1.15; margin-bottom:10px; }
+.dates { font-family:"Cormorant Garamond",serif; font-size:20px; font-weight:600; color:#4a3f24; letter-spacing:1.5px; line-height:1.6; }
 
 /* Dividers */
 .gold-divider { display:flex; align-items:center; gap:10px; margin:13px 38px; position:relative; z-index:2; }
@@ -106,23 +106,23 @@ body {
 
 /* Quote */
 .quote-block { margin:0 44px 14px; text-align:center; position:relative; z-index:2; }
-.quote-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:14px; color:#5a4e2e; line-height:1.9; }
-.quote-ref { font-size:10px; letter-spacing:2px; color:#9a8a60; font-style:normal; font-family:"Montserrat",sans-serif; }
+.quote-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:19px; color:#473d22; line-height:1.85; }
+.quote-ref { font-size:13px; letter-spacing:2px; color:#7a6a45; font-style:normal; font-family:"Montserrat",sans-serif; display:inline-block; margin-top:8px; }
 
 /* Schedule */
 .schedule { padding:0 28px 8px; position:relative; z-index:2; }
 .day-label {
   text-align:center; font-family:"Cormorant Garamond",serif;
-  font-weight:600; font-size:18px; color:#1e1a0e; margin-bottom:18px; letter-spacing:.5px;
+  font-weight:600; font-size:23px; color:#1e1a0e; margin-bottom:18px; letter-spacing:.5px;
 }
 .event-block { display:flex; gap:13px; margin-bottom:14px; align-items:flex-start; }
 .event-photo-wrap { position:relative; flex-shrink:0; }
 .event-photo { width:68px; height:68px; object-fit:cover; display:block; filter:sepia(8%) brightness(.93); }
 .event-photo-wrap::after { content:""; position:absolute; inset:0; border:1px solid rgba(180,155,100,.4); pointer-events:none; }
 .event-info { flex:1; padding-top:3px; }
-.event-time { font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:600; color:#b08828; line-height:1; margin-bottom:3px; }
-.event-title { font-size:10px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:#1e1a0e; margin-bottom:4px; }
-.event-place { font-size:10px; color:#6a5c3a; line-height:1.6; }
+.event-time { font-family:"Cormorant Garamond",serif; font-size:27px; font-weight:600; color:#9a7420; line-height:1; margin-bottom:5px; }
+.event-title { font-size:13px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#1e1a0e; margin-bottom:5px; }
+.event-place { font-size:13px; color:#4a3f24; line-height:1.6; }
 .event-sep { margin:2px 0 12px 34px; height:16px; width:1px; background:linear-gradient(to bottom,rgba(180,150,60,.4),transparent); }
 .event-solo {
   text-align:center; margin-bottom:14px; padding:13px 22px;
@@ -131,9 +131,9 @@ body {
 .event-solo::before,.event-solo::after { content:"❧"; position:absolute; font-size:14px; color:rgba(180,150,70,.35); line-height:1; }
 .event-solo::before { top:5px; left:9px; }
 .event-solo::after  { bottom:5px; right:9px; transform:rotate(180deg); }
-.event-solo .event-time  { color:#b08828; font-size:22px; display:block; margin-bottom:3px; }
-.event-solo .event-title { letter-spacing:2.5px; color:#1e1a0e; margin-bottom:4px; }
-.event-solo .event-place { font-size:10px; color:#6a5c3a; line-height:1.6; }
+.event-solo .event-time  { color:#9a7420; font-size:27px; display:block; margin-bottom:5px; }
+.event-solo .event-title { letter-spacing:2.5px; color:#1e1a0e; margin-bottom:5px; }
+.event-solo .event-place { font-size:13px; color:#4a3f24; line-height:1.6; }
 
 /* RSVP */
 .rsvp-section {
@@ -142,15 +142,15 @@ body {
   border:1px solid rgba(180,150,80,.28);
   text-align:center; position:relative; z-index:2;
 }
-.rsvp-title { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#7a6a45; margin-bottom:5px; }
-.rsvp-sub { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:13px; color:#5a4e2e; margin-bottom:14px; line-height:1.6; }
-.rsvp-field { margin-bottom:10px; text-align:left; }
-.rsvp-field label { display:block; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#9a8a65; margin-bottom:4px; }
+.rsvp-title { font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#5f5230; margin-bottom:6px; }
+.rsvp-sub { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:17px; color:#473d22; margin-bottom:16px; line-height:1.6; }
+.rsvp-field { margin-bottom:12px; text-align:left; }
+.rsvp-field label { display:block; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#7a6a45; margin-bottom:5px; }
 .rsvp-field input,.rsvp-field select {
-  width:100%; padding:9px 11px;
+  width:100%; padding:11px 13px;
   background:rgba(255,255,255,.92);
   border:1px solid rgba(180,150,80,.32);
-  font-family:"Cormorant Garamond",serif; font-size:14px; color:#1e1a0e;
+  font-family:"Cormorant Garamond",serif; font-size:17px; color:#1e1a0e;
   outline:none; -webkit-appearance:none; appearance:none;
 }
 .rsvp-field input:focus,.rsvp-field select:focus { border-color:rgba(180,150,80,.65); background:#fff; }
@@ -158,15 +158,15 @@ body {
   margin-top:12px; width:100%; padding:11px;
   background:linear-gradient(to right,#c9a860,#e8cc80,#c9a860);
   border:none; font-family:"Montserrat",sans-serif;
-  font-size:9px; font-weight:500; letter-spacing:3px; text-transform:uppercase;
+  font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
   color:#1e1a0e; cursor:pointer; transition:opacity .2s;
 }
 .rsvp-btn:hover { opacity:.85; }
-.rsvp-success { display:none; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:15px; color:#5a4e2e; padding:8px 0 2px; line-height:1.65; }
+.rsvp-success { display:none; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:18px; color:#473d22; padding:8px 0 2px; line-height:1.65; }
 
 /* Footer */
 .footer { text-align:center; padding:16px 40px 24px; border-top:1px solid rgba(180,150,80,.18); position:relative; z-index:2; }
-.footer-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:22px; color:#7a6a45; letter-spacing:2px; text-align:center; padding:20px 0 10px; }
+.footer-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:26px; color:#5f5230; letter-spacing:2px; text-align:center; padding:20px 0 10px; }
 
 /* Virgen */
 .virgen-section { text-align:center; position:relative; z-index:2; margin:10px 0; }
@@ -179,7 +179,7 @@ body {
 .carousel-section { margin:6px 28px 4px; position:relative; z-index:2; }
 .carousel-title {
   text-align:center; font-family:"Cormorant Garamond",serif; font-style:italic;
-  font-size:12px; letter-spacing:3px; color:#7a6a45; text-transform:uppercase; margin-bottom:12px;
+  font-size:16px; letter-spacing:3px; color:#5f5230; text-transform:uppercase; margin-bottom:12px;
 }
 .carousel {
   position:relative; overflow:hidden;
